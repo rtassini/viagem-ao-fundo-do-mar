@@ -1,18 +1,19 @@
 package br.com.viagemfundomar.model;
 
+import br.com.viagemfundomar.enumarator.Direcao;
 
 public class Submarino {
 
 	private int x;
 	private int y;
 	private int z;
-	private String direcao;
+	private int direcao;
 	
 	public Submarino(){
 		this.x = 0;
 		this.y = 0;
 		this.z = 0;
-		this.direcao = "Norte";
+		this.direcao = Direcao.NORTE.getDirecao();
 	}
 	
 	public int getX() {
@@ -34,17 +35,20 @@ public class Submarino {
 		this.z = z;
 	}
 	
-
-	public String getDirecao() {
+	public int getDirecao() {
 		return direcao;
 	}
 
-	public void setDirecao(String direcao) {
+	public void setDirecao(int direcao) {
 		this.direcao = direcao;
 	}
 
+	public String getPosicao() {
+		return this.getX() + " " + this.getY() + " " + this.getZ()  + " " +  Direcao.fromValue(direcao);
+	}
+	
 	@Override
 	public String toString() {
-		return "Submarino [x=" + x + ", y=" + y + ", z=" + z + ", direcao=" + direcao + "]";
+		return "Submarino [x=" + x + ", y=" + y + ", z=" + z + ", direcao=" + Direcao.fromValue(direcao) + "]";
 	} 
 }
