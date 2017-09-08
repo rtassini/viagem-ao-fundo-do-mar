@@ -1,4 +1,4 @@
-package br.com.viagemfundomar.controller;
+package br.com.viagemfundomar.helper;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,7 +9,7 @@ import org.junit.Test;
 import br.com.viagemfundomar.helper.ViagemAoFundoDoMarHelper;
 import br.com.viagemfundomar.model.Submarino;
 
-public class ViagemAoFundoDoMarControllerTest {
+public class ViagemAoFundoDoMarHelperTest {
 
 	
 	private ViagemAoFundoDoMarHelper helper;
@@ -35,6 +35,7 @@ public class ViagemAoFundoDoMarControllerTest {
 		helper.calcularInstrucoes(coordenadas, submarino);
 		
 		assertTrue("2 3 -2 SUL".equals(submarino.getPosicao()));
+		System.out.println(submarino.toString());
 	}
 
 }
