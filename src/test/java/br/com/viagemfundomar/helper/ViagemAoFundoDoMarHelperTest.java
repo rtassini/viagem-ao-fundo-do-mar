@@ -24,7 +24,7 @@ public class ViagemAoFundoDoMarHelperTest {
 	}
 
 	@Test
-	public void testCalcularInstrucoes() {
+	public void testCalcularInstrucoesParaCoordenadaDocumentada() {
 		String instrucao = "RMMLMMMDDLL";
 		
 		char[] coordenadas = new char[instrucao.length()];

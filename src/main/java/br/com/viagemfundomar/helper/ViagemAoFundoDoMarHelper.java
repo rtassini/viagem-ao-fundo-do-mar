@@ -11,43 +11,45 @@ public class ViagemAoFundoDoMarHelper {
 	private static final char RIGHT = 'R';
 	private static final char MOVE = 'M';
 	
+	private static final int MOVER_DIREITA = 1;
+	private static final int MOVER_ESQUERDA = -1;
+	
 	public void calcularInstrucoes(char[] coordenadas, Submarino submarino){
 		for (char coordenada : coordenadas) {
 			switch (coordenada) {
-			case DOWN:
-				submarino.setZ(submarino.getZ()-1);
-				break;
-
-			case UP:
-				submarino.setZ(submarino.getZ()+1);
-				break;
+				case DOWN:
+					submarino.setZ(submarino.getZ()-1);
+					break;
+	
+				case UP:
+					submarino.setZ(submarino.getZ()+1);
+					break;
+					
+				case LEFT:
+					mudarDirecao(submarino, MOVER_ESQUERDA);
+					break;
 				
-			case LEFT:
-				if(submarino.getDirecao() == 1){
-					submarino.setDirecao(Direcao.OESTE.getDirecao());
-				}else{
-					submarino.setDirecao(submarino.getDirecao() - 1);
-				}
-				break;
-			
-			case RIGHT:
-				if(submarino.getDirecao() == 4){
-					submarino.setDirecao(Direcao.NORTE.getDirecao());
-				}else{
-					submarino.setDirecao(submarino.getDirecao() + 1);
-				}
-				break;	
-				
-			case MOVE:
-				moverSubmarino(submarino);
-				break;
-				
-			default:
-				break;
+				case RIGHT:
+					mudarDirecao(submarino, MOVER_DIREITA);
+					break;	
+					
+				case MOVE:
+					moverSubmarino(submarino);
+					break;
+					
+				default:
+					break;
 			}
-			
-			
-			
+		}
+	}
+
+	private void mudarDirecao(Submarino submarino, int mover) {
+		if(submarino.getDirecao() == Direcao.NORTE.getDirecao() && mover == MOVER_ESQUERDA){
+			submarino.setDirecao(Direcao.OESTE.getDirecao());
+		}else if(submarino.getDirecao() == Direcao.OESTE.getDirecao() && mover == MOVER_DIREITA){
+			submarino.setDirecao(Direcao.NORTE.getDirecao());
+		}else{
+			submarino.setDirecao(submarino.getDirecao() + mover);
 		}
 	}
 
